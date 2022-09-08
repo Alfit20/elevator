@@ -8,17 +8,13 @@ import java.util.List;
 public class Elevator {
     private final static Integer MAX_CAPACITY = 5;
     private final List<Passenger> passengers = new ArrayList<>();
-    private Integer currentFloor;
-    private Boolean isDown;
-    private Building building = new Building();
+    private int currentFloor;
+    private boolean isDown;
+    private final Building building = new Building();
 
-
-    public Elevator() {
-        building.getFloors();
-    }
 
     public void addPassengerToElevator(Passenger passenger) {
-        if (passengers.size() > getMaxCapacity()) {
+        if (passengers.size() < getMaxCapacity()) {
             passengers.add(passenger);
         } else {
             throw new FullElevatorException("Elevator is full");
@@ -29,14 +25,6 @@ public class Elevator {
         passengers.remove(passenger);
     }
 
-    public List<Passenger> getPassengers() {
-        return passengers;
-    }
-
-    public int getMaxCapacity() {
-        return MAX_CAPACITY;
-    }
-
     public int getCurrentFloor() {
         return currentFloor;
     }
@@ -45,23 +33,24 @@ public class Elevator {
         this.currentFloor = currentFloor;
     }
 
+    public boolean isDown() {
+        return isDown;
+    }
+
+    public void setDown(boolean down) {
+        isDown = down;
+    }
+
     public Building getBuilding() {
         return building;
     }
 
-    public void setBuilding(Building building) {
-        this.building = building;
+    public List<Passenger> getPassengers() {
+        return passengers;
     }
 
-    public void setCurrentFloor(Integer currentFloor) {
-        this.currentFloor = currentFloor;
+    public int getMaxCapacity() {
+        return MAX_CAPACITY;
     }
 
-    public Boolean getDown() {
-        return isDown;
-    }
-
-    public void setDown(Boolean down) {
-        isDown = down;
-    }
 }
