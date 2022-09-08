@@ -15,7 +15,7 @@ public class Floor {
         }
     }
 
-    public void addPassengerToFloor(Passenger p) throws Exception {
+    public void addPassengerToFloor(Passenger p)  {
         if (passengers.size() < 10) {
             passengers.add(p);
         } else {
